@@ -14,12 +14,16 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 	Örnek MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler') şunu döndürmeli: {isim: 'Cheeseburger', fiyat: 8, kategori: 'Burgerler'}
 */
 
+const param = ["Cheeseburger",8,"Burgerler"];
+function MenuElemaniOlustur(val1,val2,val3){
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+	const fastFood = new Object();
+	fastFood.isim = val1;
+	fastFood.fiyat = val2;
+	fastFood.kategori = val3;
+	return fastFood;
 }
-
-
+console.log("Fastfood : ",MenuElemaniOlustur(param[0],param[1],param[2]));
 
 /*  Görev 1b (otomatik test yok): 
 	Fonksiyonu çağırın!
@@ -30,6 +34,9 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
+console.log("Menü :",MenuElemaniOlustur("karışık",5,"Pizzalar"));
+console.log("Smoking :",MenuElemaniOlustur("Winston_Dark_Blue",34,"Winston_group"));
+console.log("CarType :",MenuElemaniOlustur("Mercedes_Vito",300.000,"Panelvan"));
 
 
 
@@ -49,10 +56,20 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
-	kategori: "Öğle Yemeği", 
+	kategori: "Öğle Yemeği",
+	indirim : function(param){
 
+		if (param === "öğretmen" || param === "öğrenci"){
+			let yeni_fiyat = (this.fiyat-this.fiyat/4);
+			return yeni_fiyat;
+		}
+		if (param === "diğer"){
+			let yeni_fiyat = (this.fiyat-this.fiyat/10);
+			return yeni_fiyat;	
+		}
+    }
 }
-
+console.log("öğrenci icin iskontolu fiyat : ",burger.indirim("öğrenci"));
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -71,7 +88,8 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
-
+// let index =console.log(degerlendirmeler.indexOf("Ahmet")); index bulup assagıya index girmekte mumkun ...
+   console.log("Ahmet_INFO : ",degerlendirmeler[5]);
 
 
 /*  Görev 4 (ototest yok):  
@@ -79,7 +97,8 @@ const degerlendirmeler = [
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-
+	degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
+	console.log("Degerlendirmeler : ",degerlendirmeler);
 
 
 /*  Görev 5: 
@@ -92,12 +111,22 @@ const degerlendirmeler = [
 	🌟 ÖRNEK: DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!') dizinin sonuna şunu eklemeli: {isim: 'Hurşut', puan: 2, geribildirim: 'Boktan yemekler!'}
 	4. Güncellenmiş diziyi döndürecek
 */
+const degerlendirme = {};
 
+	degerlendirme.isim;
+	degerlendirme.puan;
+	degerlendirme.geribildirim;
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
+function DegerledirmeEkle(prm1,prm2,prm3,prm4){
+
+	degerlendirme.isim = prm2;
+	degerlendirme.puan = prm3;
+	degerlendirme.geribildirim = prm4;
+	prm1.push(degerlendirme);
+	return prm1;
 }
+
+console.log("Degerlendirmeler_Edit : ",DegerledirmeEkle(degerlendirmeler,"Hurşut",2,"Boktan yemekler!"));
 
 
 
@@ -112,10 +141,15 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(liste,index) {
 
+	let nalanName = liste[index].isim;
+	let nalanPuan = liste[index].puan;
+	let nalanGeribildirim = liste[index].geribildirim;
+
+	return  nalanName+" isimli kişi "+nalanPuan+" puan verdi ve şunları yazdı: "+nalanGeribildirim;
 }
+console.log("Feedback : ",AnahtardanDegerlendirmeAl(degerlendirmeler,0));
 
 
 
@@ -131,12 +165,17 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 	Not: Eğer 4. görevi başarıyla yaptıysanız kişinin geribildirimi boş görünmemeli
 */
 
+function SonDegerlendirmeyiAl(arguman) {
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+	const finalPerson = degerlendirmeler.pop();
+	let ad = finalPerson.isim;
+	let skor = finalPerson.puan;
+	let feedBack = finalPerson.geribildirim;
+
+	return ad+" isimli kişi "+skor+" puan verdi ve şunları yazdı: "+feedBack;	
 } 
 
-
+console.log("son_degerlendirme : ",SonDegerlendirmeyiAl(degerlendirmeler));
 
 /////////////// BONUS  GÖRVLER////////////////////
 
