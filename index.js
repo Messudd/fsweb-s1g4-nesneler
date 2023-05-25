@@ -256,14 +256,26 @@ console.log("Uzun Feedbacklere Sahip Nesneler  : ",UzunDegerlendirmeleriAl(contr
 	Bu 110 döndürmelidir çünkü başlangıç kilometre sayacını 10 olarak tanımladık ve 100 km arabayı sürdük.
 */
 
+let sayac =10;
 
-function arabaYapici(/* Kodlar buraya */) {
-    /* Kodlar buraya */
-    
+function arabaYapici(sayac) {
+	const arac = {
+
+		ad: "WW_Golf",
+		km_sayaci : sayac,
+		surus: function(mesafe){
+			
+			const newValue = (mesafe+this.km_sayaci);
+			return newValue;
+		}
+	} 
+    return arac.surus(100);
 }
 
+console.log("Son Surus degeri : ",arabaYapici(sayac));
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
+
 function sa(){
 	console.log('Kodlar çalışıyor');
 	return 'as';
