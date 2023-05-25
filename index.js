@@ -192,17 +192,16 @@ console.log("son_degerlendirme : ",SonDegerlendirmeyiAl(degerlendirmeler));
     {isim:"Latife", puan: 4, geribildirim: "Kesinlikle karaoke Cumalarını seviyorum! Yemek ve içki çeşitleri iyi."}
 	]
 */
-
 const edit_list = [...degerlendirmeler ];
 
 function PuanaGoreDegerlendirmeAl(objeList,sayi) {
-
+	const deger = Math.floor(sayi)
     const puanList = new Array();
 	for (let i=0; i<objeList.length;i++)
 	{
-		if( sayi<= objeList[i].puan && 4.9>= objeList[i].puan )
+		if( deger<= objeList[i].puan &&  (deger+1)> objeList[i].puan )
 		{
-			console.log(objeList[i]);   //   for just Show that working  //
+			//  console.log(objeList[i]);   //   for just Show that working  //
 			puanList.push(objeList[i]);
 		}
 	} 
