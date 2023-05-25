@@ -82,7 +82,7 @@ const degerlendirmeler = [
     {isim: "Ahmet", puan: 2, geribildirim: "Bu mekan beni fazla etkilemedi. Menüde özel bir şey yok ve çok pahalı. Atmosferi de ben beğenmedim ama başkaları beğenebilir." },
     {isim: "Latife", puan: 4, geribildirim: "Kesinlikle karaoke Cumalarını seviyorum! Yemek ve içki çeşitleri iyi."},
     {isim: "Reyna", puan: 3.5, geribildirim: ""},
-]
+];
 
 /*  Görev 3 (ototest yok):  
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
@@ -193,9 +193,22 @@ console.log("son_degerlendirme : ",SonDegerlendirmeyiAl(degerlendirmeler));
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+const edit_list = [...degerlendirmeler ];
+
+function PuanaGoreDegerlendirmeAl(objeList,sayi) {
+
+    const puanList = new Array();
+	for (let i=0; i<objeList.length;i++)
+	{
+		if( sayi<= objeList[i].puan && 4.9>= objeList[i].puan )
+		{
+			console.log(objeList[i]);   //   for just Show that working  //
+			puanList.push(objeList[i]);
+		}
+	} 
+    return puanList; 
 }
+console.log("Filtrelenmiş - Degerlendirmeler  : ",PuanaGoreDegerlendirmeAl(edit_list,4));
 
 
 /*  BONUS 2:    
@@ -205,10 +218,26 @@ function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
 	
 */
 
-function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+//   bu string  feedbackteki string sayısı oldu kelime deil  :(  //
+
+const control_list = [...degerlendirmeler];
+
+function UzunDegerlendirmeleriAl(control_list)
+ {	
+	const uzunDegerlerDizisi = [];
+	let k =0;
+	while(k<control_list.length)
+	{
+		if ( control_list[k].geribildirim.length>15)
+		{
+			uzunDegerlerDizisi.push(control_list[k]);
+		}
+		k++;
+	}
+	return uzunDegerlerDizisi;
 }
 
+console.log("Uzun Feedbacklere Sahip Nesneler  : ",UzunDegerlendirmeleriAl(control_list));
 
 /*  BONUS 3:  
 	Bu ek görevde degerlendirmeler dizisi kullanılmayacak!  Bu görevde kendi nesnenizi yaratmanız gerekmektedir.
