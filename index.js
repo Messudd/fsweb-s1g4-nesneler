@@ -218,7 +218,7 @@ console.log("Filtrelenmiş - Degerlendirmeler  : ",PuanaGoreDegerlendirmeAl(edit
 	
 */
 
-//   bu string  feedbackteki string sayısı oldu kelime deil  :(  //
+//   bu kod feedbackteki karakter sayısı oldu kelime deil  :(  //
 
 const control_list = [...degerlendirmeler];
 
