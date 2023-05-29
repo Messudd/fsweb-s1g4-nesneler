@@ -219,8 +219,6 @@ console.log("Filtrelenmiş - Degerlendirmeler  : ",PuanaGoreDegerlendirmeAl(edit
 
 //   bu kod feedbackteki karakter sayısı oldu kelime deil  :(  //
 
-const control_list = [...degerlendirmeler];
-
 function UzunDegerlendirmeleriAl(control_list)
  {	
 	const uzunDegerlerDizisi = [];
@@ -236,6 +234,7 @@ function UzunDegerlendirmeleriAl(control_list)
 	return uzunDegerlerDizisi;
 }
 
+const control_list = [...degerlendirmeler];
 console.log("Uzun Feedbacklere Sahip Nesneler  : ",UzunDegerlendirmeleriAl(control_list));
 
 /*  BONUS 3:  
@@ -255,23 +254,38 @@ console.log("Uzun Feedbacklere Sahip Nesneler  : ",UzunDegerlendirmeleriAl(contr
 	Bu 110 döndürmelidir çünkü başlangıç kilometre sayacını 10 olarak tanımladık ve 100 km arabayı sürdük.
 */
 
-let sayac =10;
+function arabaYapici(sayac,carName) {
 
-function arabaYapici(sayac) {
-	const arac = {
-
-		ad: "WW_Golf",
-		km_sayaci : sayac,
-		surus: function(mesafe){
-			
-			const newValue = (mesafe+this.km_sayaci);
-			return newValue;
+	const mesudCars = {
+		carName : carName,
+		km_sayaci:sayac,
+		surus : function(param)
+		{
+			let newKm = (this.km_sayaci +param);
+			return newKm;
 		}
-	} 
-    return arac.surus(100);
+	}	
+return mesudCars;
 }
 
-console.log("Son Surus degeri : ",arabaYapici(sayac));
+console.log('aracın km durumu : ',arabaYapici(100,"MAZDA RX-7").surus(10));
+// 
+// 	const arac = {
+
+// 		ad: "WW_Golf",
+// 		km_sayaci : sayac,
+// 		surus: function(mesafe){
+			
+// 			const newValue = (mesafe+this.km_sayaci);
+// 			return newValue;
+// 		}
+// 	} 
+//     return arac.surus(100);
+// }
+
+// console.log("Son Surus degeri : ",arabaYapici(10));
+
+
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
 
